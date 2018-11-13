@@ -1,5 +1,5 @@
 #基础镜像
-FROM 192.168.3.198:8083/evada/tomcat:v1.4
+FROM 192.168.3.207:5000/fft/tomcat:v1.4
 
 RUN mkdir -p /innode/app/config && /innode/docs/upload/license
 #ADD inno-de-web.war /usr/local/tomcat/webapps/

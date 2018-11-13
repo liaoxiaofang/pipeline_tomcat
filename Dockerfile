@@ -1,7 +1,7 @@
 #基础镜像
 FROM 192.168.3.207:5000/fft/tomcat:v1.4
 
-RUN mkdir -p /innode/app/config && /innode/docs/upload/license
+RUN mkdir -p /innode/app/config && mkdir -p /innode/docs/upload/license
 #ADD inno-de-web.war /usr/local/tomcat/webapps/
 ADD application.properties /innode/app/config/
 ADD innode.crt /innode/docs/upload/license

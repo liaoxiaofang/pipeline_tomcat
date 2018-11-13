@@ -1,0 +1,59 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tomcat-liao-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tomcat
+  template:
+    metadata:
+      labels:
+        app: tomcat
+    spec:
+      containers:
+      - env:
+        - name: INNO_DE_CONFIG_PATH
+          value: /innode/app/config	  
+      - name: tomcat
+        image: 192.168.3.207:5000/fft/tomcat:v1.5
+        ports:
+        - containerPort: 8080
+        ports:
+        - containerPort: 8000		
+        volumeMounts:
+        - mountPath: /usr/local/tomcat/webapps
+          name: vol1-tomcat-data
+          subPath: tomcat-webapps	
+        - mountPath: /innode/app/config
+          name: vol1-tomcat-data
+          subPath: tomcat-appconfig		
+        - mountPath: /innode/docs/upload
+          name: vol1-tomcat-data
+          subPath: tomcat-upload			  
+      volumes:
+      - name: vol1-tomcat-data
+        persistentVolumeClaim:
+          claimName: pipeline-tomcat		  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tomcat-svc
+spec:
+  selector:
+    app: tomcat
+  type: NodePort
+  ports:
+  - name: tcp
+    nodePort: 10381
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  ports:
+  - name: tcp
+    nodePort: 10382
+    port: 8000
+    protocol: TCP
+    targetPort: 8000

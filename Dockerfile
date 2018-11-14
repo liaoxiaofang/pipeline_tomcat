@@ -7,6 +7,7 @@ ADD application.properties /innode/app/config/
 ADD innode.crt /innode/docs/upload/license
 ADD license.lic /innode/docs/upload/license     
 
+VOLUME ["/usr/local/tomcat/webapps","/innode/app/config","/innode/docs/upload/license"]
 
 EXPOSE 8080
 

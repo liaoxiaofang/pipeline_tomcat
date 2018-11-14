@@ -22,7 +22,6 @@ spec:
         - containerPort: 8080
           name: 8080tcp10381
           protocol: TCP
-        ports:
         - containerPort: 8000		
           name: 8000tcp10382
           protocol: TCP

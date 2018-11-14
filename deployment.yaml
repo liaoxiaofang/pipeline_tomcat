@@ -20,8 +20,12 @@ spec:
         image: 192.168.3.207:5000/fft/tomcat:v1.7
         ports:
         - containerPort: 8080
+          name: 8080tcp10381
+          protocol: TCP
         ports:
         - containerPort: 8000		
+          name: 8000tcp10382
+          protocol: TCP
         volumeMounts:
         - mountPath: /usr/local/tomcat/webapps
           name: vol1-tomcat-data

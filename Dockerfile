@@ -7,6 +7,8 @@ ADD cp_war.sh /tmp
 ADD application.properties /innode/app/config
 ADD innode.crt /innode/docs/upload/license
 ADD license.lic /innode/docs/upload/license     
+RUN chmod +x /tmp/cp_war.sh
+RUN echo 'cat /tmp/cp_war.sh'
 
 VOLUME ["/usr/local/tomcat/webapps","/innode/app/config","/innode/docs/upload/license"]
 

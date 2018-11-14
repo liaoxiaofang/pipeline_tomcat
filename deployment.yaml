@@ -16,7 +16,7 @@ spec:
       - env:
         - name: INNO_DE_CONFIG_PATH
           value: /innode/app/config	  
-      - name: tomcat
+        name: tomcat-liao-deployment
         image: 192.168.3.207:5000/fft/tomcat:v1.5
         ports:
         - containerPort: 8080

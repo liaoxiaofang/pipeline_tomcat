@@ -8,11 +8,11 @@ ADD application.properties /tmp
 ADD application.properties /innode/app/config
 ADD innode.crt /innode/docs/upload/license
 ADD license.lic /innode/docs/upload/license     
-RUN chmod +x /tmp/cp_war.sh
+RUN chmod +x h/tmp/cp_war.sh
 RUN echo 'cat /tmp/cp_war.sh'
 
 VOLUME ["/usr/local/tomcat/webapps","/innode/app/config","/innode/docs/upload/license"]
 
 EXPOSE 8080
 
-CMD ["/bin/sh", "-e", "/usr/local/bin/run"]
+CMD ["/tmp/cp_war.sh", "/bin/sh", "-e", "/usr/local/bin/run"]

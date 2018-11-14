@@ -1,6 +1,8 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
+  annotations:
+    field.cattle.io/creatorId: user-tomcat
   name: tomcat-liao-deployment
 spec:
   replicas: 1
@@ -20,18 +22,18 @@ spec:
         image: 192.168.3.207:5000/fft/tomcat:v1.8
         ports:
         - containerPort: 8080
-          name: 8080tcp10381
+          name: 8080tcp10382
           protocol: TCP
         - containerPort: 8000		
-          name: 8000tcp10382
+          name: 8000tcp10383
           protocol: TCP
         volumeMounts:
         - mountPath: /usr/local/tomcat/webapps
           name: vol1-tomcat-data
           subPath: tomcat-webapps	
-        - mountPath: /innode/app/config
+        - mountPath: /innode/app
           name: vol1-tomcat-data
-          subPath: tomcat-appconfig		
+          subPath: tomcat-app
         - mountPath: /innode/docs/upload
           name: vol1-tomcat-data
           subPath: tomcat-upload			  
@@ -50,13 +52,12 @@ spec:
   type: NodePort
   ports:
   - name: 8080tcp10381
-    nodePort: 10381
+    nodePort: 10382
     port: 8080
     protocol: TCP
     targetPort: 8080
-  ports:
   - name: 8000tcp10382
-    nodePort: 10382
+    nodePort: 10383
     port: 8000
     protocol: TCP
     targetPort: 8000

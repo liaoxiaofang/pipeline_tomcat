@@ -9,7 +9,7 @@ ADD license.lic /innode/docs/upload/license
 #ADD cp_war.sh /tmp 
 #RUN chmod a+x /tmp/cp_war.sh
 
-#VOLUME ["/usr/local/tomcat/webapps","/innode/app/config","/innode/docs/upload/license"]
+VOLUME ["/usr/local/tomcat/webapps","/innode/app/config","/innode/docs/upload/license"]
 
 EXPOSE 8080
 

@@ -15,4 +15,4 @@ VOLUME ["/usr/local/tomcat/webapps","/innode/app/config","/innode/docs/upload/li
 EXPOSE 8080
 
 #ENTRYPOINT ["/tmp/cp_war.sh"]
-CMD ["/bin/sh", "-e", "/usr/local/bin/run","/tmp/cp_war.sh"]
+CMD ["/bin/sh", "-e", "/usr/local/bin/run", "/tmp/cp_war.sh"]
